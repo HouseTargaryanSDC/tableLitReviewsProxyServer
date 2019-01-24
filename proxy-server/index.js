@@ -6,7 +6,7 @@ const PORT = 9000;
 proxy.get('/api/reviews/all/:restaurantId', (req, res) => {
   console.log('proxy get reviews all');
   const { restaurantId } = req.params;
-  axios.get(`http://52.53.166.4:9001/api/reviews/all/${restaurantId}`)
+  axios.get(`http://54.183.243.96:80/api/reviews/all/${restaurantId}`)
   // axios.get(`http://3.86.82.182:9001/api/reviews/all/${restaurantId}`)
     .then(({data}) => {
       res.status(200).send(data);
@@ -15,11 +15,24 @@ proxy.get('/api/reviews/all/:restaurantId', (req, res) => {
 
 proxy.get('/api/reviews/summary/:restaurantId', (req, res) => {
   const { restaurantId } = req.params;
-  axios.get(`http://52.53.166.4:9001/api/reviews/summary/${restaurantId}`)
+  axios.get(`http://54.183.243.96:80/api/reviews/summary/${restaurantId}`)
   // axios.get(`http://3.86.82.182:9001/api/reviews/summary/${restaurantId}`)
     .then(({data}) => {
       res.status(200).send(data);
     });
+});
+
+proxy.post('/api/reviews/all/:restaurantId', (req, res) => {
+  const { body } = req;
+  const { restaurantId } = req.params;
+  axios.post(`http://54.183.243.96:80/api/reviews/all/${restaurantId}`, body)
+  .then(() => {
+    res.status(201).send('post successful')
+  })
+  .catch((err) => {
+    console.log('error posting', err);
+    res.status(500).send('error posting!');
+  });
 });
 
 proxy.get('/api/nav/:metro', (req, res) => {
