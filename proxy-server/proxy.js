@@ -11,5 +11,6 @@ proxy.use(bodyParser.urlencoded({ extended: true }));
 proxy.use(cors());
 proxy.use(morgan('dev'));
 proxy.use(express.static(path.join(__dirname, '../public')));
+proxy.use('/loaderio-702202d5008e0c736925d460ba7cdc4d.txt', express.static(path.join(__dirname, './loloaderio-702202d5008e0c736925d460ba7cdc4d.txt')));
 
 module.exports = proxy;
