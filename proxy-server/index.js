@@ -6,7 +6,7 @@ const PORT = 9000;
 proxy.get('/api/reviews/all/:restaurantId', (req, res) => {
   console.log('proxy get reviews all');
   const { restaurantId } = req.params;
-  axios.get(`http://54.183.243.96:80/api/reviews/all/${restaurantId}`)
+  axios.get(`http://54.193.70.16:80/api/reviews/all/${restaurantId}`)
   // axios.get(`http://3.86.82.182:9001/api/reviews/all/${restaurantId}`)
     .then(({data}) => {
       res.status(200).send(data);
@@ -15,7 +15,7 @@ proxy.get('/api/reviews/all/:restaurantId', (req, res) => {
 
 proxy.get('/api/reviews/summary/:restaurantId', (req, res) => {
   const { restaurantId } = req.params;
-  axios.get(`http://54.183.243.96:80/api/reviews/summary/${restaurantId}`)
+  axios.get(`http://54.193.70.16:80/api/reviews/summary/${restaurantId}`)
   // axios.get(`http://3.86.82.182:9001/api/reviews/summary/${restaurantId}`)
     .then(({data}) => {
       res.status(200).send(data);
@@ -25,7 +25,7 @@ proxy.get('/api/reviews/summary/:restaurantId', (req, res) => {
 proxy.post('/api/reviews/all/:restaurantId', (req, res) => {
   const { body } = req;
   const { restaurantId } = req.params;
-  axios.post(`http://54.183.243.96:80/api/reviews/all/${restaurantId}`, body)
+  axios.post(`http://54.193.70.16:80/api/reviews/all/${restaurantId}`, body)
   .then(() => {
     res.status(201).send('post successful')
   })
